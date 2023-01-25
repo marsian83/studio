@@ -163,7 +163,7 @@ class CeleryTask(Task):
 
     def _prepare_kwargs(self, kwargs):
         return self.backend.encode({
-            key: value.hex if isinstance(value, uuid.UUID) else value
+            key: str(value) if isinstance(value, uuid.UUID) else value
             for key, value in kwargs.items()
         })
 
